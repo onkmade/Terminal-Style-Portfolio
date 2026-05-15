@@ -5,13 +5,13 @@
 
 const PORTFOLIO_DATA = {
     user: {
-        name: "Alex Chen",
-        handle: "@alexchen",
+        name: "Onkmade",
+        handle: "@Onkmade",
         title: "Full-Stack Developer",
         tagline: "Building the future, one commit at a time.",
-        location: "San Francisco, CA",
-        email: "alex@portfolio.dev",
-        website: "https://alexchen.dev",
+        location: "India, Maharashtra",
+        email: "example@gmail.com",
+        website: "https://onkmade.github.io/Terminal-Style-Portfolio/",
         resumeUrl: "#",
     },
 
@@ -24,7 +24,7 @@ const PORTFOLIO_DATA = {
 /_/  |_/\____/\____/_____/_/  |_\____//____/  
         `,
         bio: [
-            "Hello, world! I'm Alex — a developer who turns caffeine into code.",
+            "Hello, world! I'm Onkmade — a developer who turns caffeine into code.",
             "",
             "I specialize in building scalable web applications, developer tools,",
             "and interactive experiences that live at the intersection of design",
@@ -82,7 +82,7 @@ const PORTFOLIO_DATA = {
             title: "NebulaDB",
             stack: "Rust, Tokio, gRPC, Raft",
             description: "A distributed key-value store built from scratch with Raft consensus. Handles 50k+ req/s with sub-millisecond latency.",
-            github: "https://github.com/alexchen/nebula-db",
+            github: "https://github.com/onkmade/nebula-db",
             live: null,
             featured: true
         },
@@ -91,7 +91,7 @@ const PORTFOLIO_DATA = {
             title: "TermUI",
             stack: "TypeScript, React, XTerm.js, WebSocket",
             description: "A browser-based terminal emulator with collaborative editing, supporting 100+ concurrent sessions.",
-            github: "https://github.com/alexchen/term-ui",
+            github: "https://github.com/onkmade/term-ui",
             live: "https://term-ui.vercel.app",
             featured: true
         },
@@ -100,7 +100,7 @@ const PORTFOLIO_DATA = {
             title: "RayTracer.rs",
             stack: "Rust, WGSL, WebGPU",
             description: "Real-time ray tracer running in the browser via WebGPU. Features BVH acceleration and denoising.",
-            github: "https://github.com/alexchen/raytracer-rs",
+            github: "https://github.com/onkmade/raytracer-rs",
             live: "https://raytracer-rs.vercel.app",
             featured: false
         },
@@ -109,7 +109,7 @@ const PORTFOLIO_DATA = {
             title: "DevCLI",
             stack: "Go, Cobra, Bubble Tea",
             description: "A swiss-army knife CLI for developers. Project scaffolding, git automation, and deployment pipelines.",
-            github: "https://github.com/alexchen/devcli",
+            github: "https://github.com/onkmade/devcli",
             live: null,
             featured: false
         },
@@ -118,7 +118,7 @@ const PORTFOLIO_DATA = {
             title: "CodeReviewer AI",
             stack: "Python, FastAPI, LangChain, OpenAI",
             description: "Automated code review bot that integrates with GitHub PRs. Catches bugs, suggests refactors, and enforces style.",
-            github: "https://github.com/alexchen/code-reviewer",
+            github: "https://github.com/onkmade/code-reviewer",
             live: null,
             featured: true
         }
@@ -172,16 +172,16 @@ const PORTFOLIO_DATA = {
     ],
 
     socials: {
-        github: "https://github.com/alexchen",
-        twitter: "https://twitter.com/alexchen",
-        linkedin: "https://linkedin.com/in/alexchen",
-        devto: "https://dev.to/alexchen",
-        discord: "@alexchen#1234",
-        email: "alex@portfolio.dev"
+        github: "https://github.com/onkmade",
+        twitter: "https://twitter.com/madesear",
+        linkedin: "https://linkedin.com/in/onkmade",
+        devto: "https://dev.to/onkmade",
+        discord: "@onkmade#1234",
+        email: "onkmade@portfolio.dev"
     },
 
     contact: {
-        email: "alex@portfolio.dev",
+        email: "onkmade@portfolio.dev",
         availability: "Open to freelance & collaborations",
         responseTime: "< 24 hours",
         preferred: "Email or GitHub Issues",

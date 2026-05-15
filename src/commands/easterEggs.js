@@ -16,7 +16,7 @@ const EasterEggs = {
             const responses = [
                 "Nice try. This is a portfolio, not a server.",
                 "User is not in the sudoers file. This incident will be reported.",
-                "alex is not in the sudoers file. This incident will be reported to /dev/null.",
+                "Onkmade is not in the sudoers file. This incident will be reported to /dev/null.",
                 "Permission denied. Have you tried turning it off and on again?",
                 "sudo: unable to execute /bin/flex: Permission denied"
             ];
