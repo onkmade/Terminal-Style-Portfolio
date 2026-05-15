@@ -1,0 +1,463 @@
+/* ============================================
+   TERMINAL PORTFOLIO - MAIN STYLES
+   Minimal Cyber-Terminal Aesthetic
+   ============================================ */
+
+:root {
+    --color-primary: #ff6b00;
+    --color-secondary: #ffb347;
+    --color-bg: #0a0a0a;
+    --color-surface: #111111;
+    --color-surface-elevated: #1a1a1a;
+    --color-text: #ffb347;
+    --color-text-dim: #ff6b0060;
+    --color-border: #ff6b0030;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    --glow-primary: 0 0 10px rgba(255, 107, 0, 0.3), 0 0 20px rgba(255, 107, 0, 0.1);
+    --glow-secondary: 0 0 8px rgba(255, 179, 71, 0.2);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-bg);
+}
+
+*::-webkit-scrollbar {
+    width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 3px;
+}
+
+body {
+    font-family: var(--font-mono);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   CRT EFFECTS
+   ============================================ */
+.scanlines {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0) 50%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.1)
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 50;
+}
+
+.crt-flicker {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 107, 0, 0.02);
+    opacity: 0;
+    animation: flicker 0.15s infinite;
+    pointer-events: none;
+    z-index: 49;
+}
+
+.vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.4) 100%);
+    pointer-events: none;
+    z-index: 48;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.02; }
+    50% { opacity: 0.05; }
+    100% { opacity: 0.02; }
+}
+
+/* ============================================
+   TERMINAL OUTPUT STYLES
+   ============================================ */
+.terminal-line {
+    opacity: 0;
+    transform: translateY(4px);
+}
+
+.command-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.command-prompt {
+    color: var(--color-primary);
+    font-weight: 600;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.command-text {
+    color: var(--color-secondary);
+}
+
+.output-block {
+    margin-bottom: 1rem;
+    padding-left: 0;
+}
+
+/* ASCII Art */
+.ascii-art {
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    line-height: 1.2;
+    white-space: pre;
+    overflow-x: auto;
+    text-shadow: var(--glow-primary);
+}
+
+@media (min-width: 768px) {
+    .ascii-art {
+        font-size: 0.875rem;
+    }
+}
+
+/* Section Headers */
+.section-header {
+    color: var(--color-primary);
+    font-weight: 700;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1rem;
+    text-shadow: var(--glow-primary);
+}
+
+/* Skill Bars */
+.skill-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.skill-label {
+    min-width: 120px;
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+}
+
+.skill-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--color-surface-elevated);
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-radius: 3px;
+    width: 0%;
+    box-shadow: var(--glow-primary);
+}
+
+/* Project Cards */
+.project-card {
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--glow-primary);
+    transform: translateX(4px);
+}
+
+.project-title {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.project-stack {
+    color: var(--color-text-dim);
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-desc {
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+}
+
+.project-links a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.project-links a:hover {
+    text-shadow: var(--glow-primary);
+    text-decoration: underline;
+}
+
+/* Timeline */
+.timeline-entry {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-border);
+}
+
+.timeline-entry:hover {
+    border-left-color: var(--color-primary);
+}
+
+.timeline-date {
+    color: var(--color-text-dim);
+    font-size: 0.75rem;
+    min-width: 100px;
+}
+
+.timeline-content {
+    flex: 1;
+}
+
+.timeline-role {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.timeline-company {
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+}
+
+/* Contact / Social Links */
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.link-item:hover {
+    color: var(--color-primary);
+    transform: translateX(8px);
+    text-shadow: var(--glow-primary);
+}
+
+.link-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-primary);
+}
+
+/* Error Message */
+.error-msg {
+    color: #ff4444;
+    padding: 0.5rem 0;
+}
+
+.error-msg::before {
+    content: "[ERROR] ";
+    font-weight: 700;
+}
+
+/* Success Message */
+.success-msg {
+    color: #44ff44;
+}
+
+/* Info Box */
+.info-box {
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+}
+
+/* Help Table */
+.help-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.help-table th {
+    text-align: left;
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.5rem;
+    font-weight: 600;
+}
+
+.help-table td {
+    padding: 0.5rem;
+    color: var(--color-secondary);
+    border-bottom: 1px solid rgba(255, 107, 0, 0.05);
+}
+
+.help-table tr:hover td {
+    background: rgba(255, 107, 0, 0.05);
+}
+
+.help-command {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-family: var(--font-mono);
+}
+
+/* ============================================
+   INPUT & CURSOR
+   ============================================ */
+#terminal-input {
+    caret-color: transparent;
+}
+
+#input-cursor {
+    animation: blink 1s step-end infinite;
+    mix-blend-mode: difference;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Autocomplete */
+#autocomplete {
+    z-index: 60;
+}
+
+.autocomplete-item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+    transition: all 0.15s;
+}
+
+.autocomplete-item:hover,
+.autocomplete-item.active {
+    background: rgba(255, 107, 0, 0.15);
+    color: var(--color-primary);
+}
+
+/* ============================================
+   MATRIX RAIN (subtle)
+   ============================================ */
+#matrix-canvas {
+    image-rendering: pixelated;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+    .ascii-art {
+        font-size: 0.5rem;
+        line-height: 1;
+    }
+
+    .skill-label {
+        min-width: 80px;
+        font-size: 0.75rem;
+    }
+
+    .timeline-date {
+        min-width: 70px;
+    }
+
+    #prompt-symbol {
+        font-size: 0.75rem;
+    }
+
+    #terminal-input {
+        font-size: 0.875rem;
+    }
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+.text-glow {
+    text-shadow: var(--glow-primary);
+}
+
+.border-glow {
+    box-shadow: var(--glow-primary);
+}
+
+.dim {
+    color: var(--color-text-dim);
+}
+
+.highlight {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Selection */
+::selection {
+    background: rgba(255, 107, 0, 0.3);
+    color: var(--color-secondary);
+}
+
+/* Focus states */
+*:focus {
+    outline: none;
+}
+
+/* Boot sequence specific */
+.boot-line {
+    opacity: 0;
+    font-size: 0.875rem;
+    line-height: 1.8;
+}
+
+.boot-line.success { color: #44ff44; }
+.boot-line.info { color: var(--color-secondary); }
+.boot-line.warn { color: #ffaa00; }
+.boot-line.error { color: #ff4444; }
+.boot-line.system { color: var(--color-primary); font-weight: 600; }
+
+/* Hidden initially */
+.hidden { display: none !important; }
+
+/* Stagger animation helper */
+.stagger-in > * {
+    opacity: 0;
+    transform: translateY(8px);
+}

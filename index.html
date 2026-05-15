@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user@portfolio:~</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/main.css">
+</head>
+<body class="bg-[#0a0a0a] text-[#ffb347] font-mono overflow-hidden">
+    <!-- CRT Overlay Effects -->
+    <div id="crt-overlay" class="pointer-events-none fixed inset-0 z-50">
+        <div class="scanlines"></div>
+        <div class="crt-flicker"></div>
+        <div class="vignette"></div>
+    </div>
+
+    <!-- Matrix Rain Canvas (subtle background) -->
+    <canvas id="matrix-canvas" class="fixed inset-0 z-0 opacity-[0.03] pointer-events-none"></canvas>
+
+    <!-- Boot Sequence -->
+    <div id="boot-sequence" class="fixed inset-0 z-40 bg-[#0a0a0a] flex flex-col justify-center items-start p-8 md:p-16">
+        <div id="boot-content" class="max-w-3xl w-full"></div>
+    </div>
+
+    <!-- Main Terminal Interface -->
+    <div id="terminal-interface" class="fixed inset-0 z-10 flex flex-col opacity-0">
+        <!-- Terminal Header / Status Bar -->
+        <header id="terminal-header" class="flex items-center justify-between px-4 py-2 bg-[#111111] border-b border-[#ff6b00]/20 text-xs text-[#ff6b00]/60">
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#ff6b00] animate-pulse"></span>
+                    <span id="terminal-status">ONLINE</span>
+                </span>
+                <span class="hidden md:inline" id="current-path">~/portfolio</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span id="clock" class="font-mono"></span>
+                <span class="hidden md:inline">LAT: <span id="latency">12ms</span></span>
+            </div>
+        </header>
+
+        <!-- Terminal Output Area -->
+        <main id="terminal-output" class="flex-1 overflow-y-auto p-4 md:p-6 space-y-1 scroll-smooth">
+            <!-- Welcome message will be injected here -->
+        </main>
+
+        <!-- Terminal Input Area -->
+        <footer id="terminal-input-area" class="px-4 py-3 md:px-6 md:py-4 bg-[#111111] border-t border-[#ff6b00]/20">
+            <div class="flex items-center gap-2 max-w-5xl mx-auto">
+                <span id="prompt-symbol" class="text-[#ff6b00] font-bold select-none shrink-0">user@portfolio:~$</span>
+                <div class="relative flex-1 min-w-0">
+                    <input 
+                        type="text" 
+                        id="terminal-input" 
+                        class="w-full bg-transparent border-none outline-none text-[#ffb347] font-mono text-sm md:text-base caret-transparent"
+                        autocomplete="off" 
+                        spellcheck="false"
+                        autofocus
+                    >
+                    <span id="input-cursor" class="absolute top-0 left-0 w-[0.6em] h-[1.2em] bg-[#ff6b00]/80 pointer-events-none"></span>
+                </div>
+            </div>
+            <!-- Autocomplete Suggestions -->
+            <div id="autocomplete" class="hidden absolute bottom-full left-0 right-0 bg-[#1a1a1a] border border-[#ff6b00]/30 rounded-t-lg max-h-48 overflow-y-auto mx-4 md:mx-6">
+            </div>
+        </footer>
+    </div>
+
+    <!-- Sound Toggle -->
+    <button id="sound-toggle" class="fixed top-4 right-4 z-50 w-8 h-8 flex items-center justify-center text-[#ff6b00]/40 hover:text-[#ff6b00] transition-colors" title="Toggle Sound">
+        <svg id="sound-icon-on" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+        <svg id="sound-icon-off" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path></svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="src/utilities/helpers.js"></script>
+    <script src="src/data/portfolioData.js"></script>
+    <script src="src/animations/bootSequence.js"></script>
+    <script src="src/animations/terminalEffects.js"></script>
+    <script src="src/animations/matrixRain.js"></script>
+    <script src="src/commands/commandRegistry.js"></script>
+    <script src="src/commands/easterEggs.js"></script>
+    <script src="src/components/terminalRenderer.js"></script>
+    <script src="src/components/inputHandler.js"></script>
+    <script src="src/main.js"></script>
+</body>
+</html>

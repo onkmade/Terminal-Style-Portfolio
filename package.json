@@ -1,0 +1,17 @@
+{
+  "name": "terminal-style-portfolio",
+  "version": "1.0.0",
+  "description": "A highly immersive, command-line driven developer portfolio built with HTML, Tailwind CSS, JavaScript, and GSAP animations.",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "tailwindcss": "^4.3.0"
+  }
+}
